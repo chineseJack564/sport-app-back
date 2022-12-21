@@ -1,0 +1,86 @@
+<div>
+    <% if (locals.errors) { %>
+        <div class="errors">
+            You need to fix the following errors:
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                <% });%>
+            </ul>
+        </div>
+    <% } %>
+    
+    <div class="form-box" id='new_exercise'>
+
+        <form action="<%=submitPath%>" method="POST">
+            <input type="hidden" name='_method' value="patch">
+            <div class="form-title">
+                <h2 class='new-form-title'>Edit Exercise</h2>
+            </div>
+
+            <div class="input-box" id="new-form-input-box">
+                <div class="label-input-box">
+                    <label for="name">Name</label>
+                    <input type="text" class="register-form-input" name="name" id="name" value="<%=exercise.name%>" placeholder="<%=exercise.name%>">
+                    <label for="title">(Minimum 5 characters)</label>
+                </div>
+
+                <div class="label-input-box">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" rows="4" cols="50" class="register-form-input-area"><%=exercise.description%></textarea>
+                </div>
+            </div>
+            
+                <div class="grid-container">
+                    <div class="grid-child">
+                        <div class="grid-container">
+                            <div class="grid-child">
+                                <label for="workZoneP" id="exercise-form-text">Primary Workzone:</label>
+                            </div>
+                            
+                            <div class="grid-child">
+                                <select class="select-box" name="workZoneP" id="workZoneP">
+                                    <option value="<%= exercise.workZoneP %>" selected><%=exercise.workZoneP%></option>
+                                    <option value="Pectoral">Pectoral</option>
+                                    <option value="Dorsal">Dorsal</option>
+                                    <option value="Quadriceps">Quadriceps</option>
+                                    <option value="Biceps">Biceps</option>
+                                    <option value="Shoulders">Shoulders</option>
+                                    <option value="Hamstrings">Hamstrings</option>
+                                    <option value="Buttocks">Buttocks</option>
+                                    <option value="ABS">ABS</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-child">
+                        <div class="grid-container">
+
+                            <div class="grid-child">
+                                <label for="workZoneS" id="exercise-form-text">Secondary Workzone:</label>
+                            </div>
+                            
+                            <div class="grid-child">
+                                <select class="select-box" name="workZoneS" id="workZoneS">
+                                    <option value="<%= exercise.workZoneS %>" selected><%=exercise.workZoneS%></option>
+                                    <option value="Pectoral">Pectoral</option>
+                                    <option value="Dorsal">Dorsal</option>
+                                    <option value="Quadriceps">Quadriceps</option>
+                                    <option value="Biceps">Biceps</option>
+                                    <option value="Shoulders">Shoulders</option>
+                                    <option value="Hamstrings">Hamstrings</option>
+                                    <option value="Buttocks">Buttocks</option>
+                                    <option value="ABS">ABS</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="action-bar-button1"><p>Back</p></button>
+                <input type="submit" class="form-submit-button" id="new-form-button" value="Update Exercise">
+        </form>
+    </div>
+</div>
+
+

@@ -1,0 +1,26 @@
+<div>
+    <% if (locals.errors) { %>
+        <div class="errors">
+            You need to fix the following errors:
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                <% });%>
+            </ul>
+        </div>
+    <% } %>
+
+    <h2><%= review.title %></h2>
+
+        <p> Score: <%= review.score %> </p>
+
+        <p> <%= review.content %> </p>
+
+    <form action="<%= deletePath %>" method="post">
+        <input type="hidden" name='_method' value="delete">
+        <input type="submit" value="Delete review" />
+    </form>
+
+    <a href='<%= editPath %>'>Edit review</a><br>
+    <a href='<%= indexPath %>'>Review Index</a>
+</div>

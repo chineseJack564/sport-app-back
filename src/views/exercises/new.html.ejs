@@ -1,0 +1,82 @@
+<div>
+
+    
+    <div class="form-box" id='new_exercise'>
+        
+
+        <form action="<%=submitPath%>" method="POST">
+            <div class="form-title">
+                <h2 class='new-form-title'>New Exercise</h2>
+            </div>
+            <% if (locals.errors) { %>
+                <div class="errors">
+                    You need to fix the following errors:
+                    <ul>
+                        <% errors.forEach(error => { %>
+                            <li><%= error.message %></li>
+                        <% });%>
+                    </ul>
+                </div>
+            <% } %>
+            <div class="input-box" id="new-form-input-box">
+                <div class="label-input-box">
+                    <label for="name">Name</label>
+                    <input type="text" class="register-form-input" name="name" id="name"/>
+                </div>
+
+                <div class="label-input-box">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" rows="4" cols="50" class="register-form-input-area"> </textarea>
+                </div>
+            </div>
+            
+                <div class="grid-container">
+                    <div class="grid-child">
+                        <div class="grid-container">
+                            <div class="grid-child">
+                                <label for="workZoneP" id="exercise-form-text">Primary Workzone:</label>
+                            </div>
+                            
+                            <div class="grid-child">
+                                <select class="select-box" name="workZoneP" id="workZoneP">
+                                    <option selected disabled>Chose a workzone</option>
+                                    <option value="Pectoral">Pectoral</option>
+                                    <option value="Dorsal">Dorsal</option>
+                                    <option value="Quadriceps">Quadriceps</option>
+                                    <option value="Biceps">Biceps</option>
+                                    <option value="Shoulders">Shoulders</option>
+                                    <option value="Hamstrings">Hamstrings</option>
+                                    <option value="Buttocks">Buttocks</option>
+                                    <option value="ABS">ABS</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid-child">
+                        <div class="grid-container">
+
+                            <div class="grid-child">
+                                <label for="workZoneS" id="exercise-form-text">Secondary Workzone:</label>
+                            </div>
+                            
+                            <div class="grid-child">
+                                <select class="select-box" name="workZoneS" id="workZoneS">
+                                    <option selected disabled>Chose a workzone</option>
+                                    <option value="Pectoral">Pectoral</option>
+                                    <option value="Dorsal">Dorsal</option>
+                                    <option value="Quadriceps">Quadriceps</option>
+                                    <option value="Biceps">Biceps</option>
+                                    <option value="Shoulders">Shoulders</option>
+                                    <option value="Hamstrings">Hamstrings</option>
+                                    <option value="Buttocks">Buttocks</option>
+                                    <option value="ABS">ABS</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="form-submit-button" id="new-form-button" value="Create Exercise">
+        </form>
+    </div>
+</div>

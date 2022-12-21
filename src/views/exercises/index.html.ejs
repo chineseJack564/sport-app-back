@@ -1,0 +1,36 @@
+<div class="sec-header">
+    <h2 class='sec-title'>Our Exercises</h2>
+    <p class='sec-title'><i class="fas fa-sort-down"></i></p>
+</div>
+<div class="main-flex">
+    <div class="noti">
+        <% if (locals.errors) { %>
+    Something is wrong with the creation:
+        <h3><%= errors %></h3>
+        <% } %>
+    </div>
+    <div class="action-bar">
+        <input type="text" class="search-input" placeholder="Search here">
+        <button class="action-bar-button1">Search</button>
+        <form action="<%= paths.exercise_new_path %>">
+            <input class="action-bar-button2" type="submit" value="+ New Exercise" />
+        </form>
+    </div>
+
+    <div class="routines-flex">
+        <% exercises.forEach( ex => { %>
+            <a class="exercise-card" href=<%= exercisePath(ex) %>>
+              <img class="routine-img" src="<%= assetPath('gallery-1.jpg') %>">
+              <div class="wod-info-flex">
+                <p class="routine-font-title red-link"><%= ex.name %></p>
+                <p class="routine-font black-font"> <%= ex.description %></p>
+                <p class="ex-keywords">WorkZone 1: <%= ex.workZoneP %></p>
+                <p class="ex-keywords">WorkZone 2: <%= ex.workZoneS %></p>
+                <p class="routine-font black-font"> Made by: <%= ex.user.username %> </p>
+              </div>
+            </a>
+         <% }) %>
+
+    </div>
+</div>
+

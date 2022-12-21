@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
+/* Form Box */
+.form-box {
+
+    /* Colors */
+    background-color: #0b2a97;
+    color: white;
+
+    /* Font */
+    font-family: 'poppins', sans-serif;
+
+    /* Position */
+    margin:auto;
+    padding: 70px 0;
+
+    /* Align */
+    text-align: center;
+    align-items: center;
+
+    /* Shape */
+    border-radius: 10px;
+    width: 36%;
+    margin-top: 8vh; }
+
+/* Input box */
+.input-box {
+
+    /* Shape */
+    width: 80%;
+    align-items: center;
+    text-align: left;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.label-input-box {
+
+    /* Shape */
+    width: 100%;
+    margin: 5% 0% 5% 0%;
+    margin-left: 9%;
+}
+
+/* Submit Button */
+.form-submit-button {
+
+    /* Shape */
+    width: 80%;
+    border-radius: 10px;
+    padding: 15px;
+
+    /* Colors */
+    background-color: white;
+    color: #0b2a97;
+    border: 0px solid white;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+/* Form Input */
+.register-form-input {
+
+    /* Shape */
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: medium;
+
+    /* Colors */
+    background-color: white;
+    border: 0px solid white;
+}
+
+.white-link {
+
+    /* Color */
+    color: white;
+}

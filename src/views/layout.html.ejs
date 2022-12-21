@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>IIC2513 - WeWod By Webartist</title>
+    <% if (env !== 'development') { %>
+    <link rel="stylesheet" href="<%= assetPath('app.css') %>" />
+    <% } %>
+    <script src="https://kit.fontawesome.com/5ec735b0b1.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  </head>
+
+  <body>
+
+    <header class="navbar">
+      <a href="/" class="logo"
+        ><img class="logo-image" src="<%= assetPath('logo-full.png') %>" alt="logo"
+      /></a>
+      <div class="nav-links-div">
+        <ul class="nav-links">
+          <li class="li-nav"><a href="<%=paths.exercise_index_path %>">Excercises</a></li>
+          <li class="li-nav"><a href="<%=paths.routine_index_path %>">Routines</a></li>
+          <% if ( locals.currentUserIsAdmin ) { %>
+              <li class="li-nav"><a href="<%= paths.user_index_path %>">Users</a></li>
+          <% } %>  
+        </ul>
+      </div>
+      <div class="user-action">
+        <% if (locals.currentUser) { %>
+          <a href="<%= paths.userPath(currentUser.id) %>" class="left-h-flex"><p class="username-display">Hi there, <%= currentUser.username %></p>
+          <% if ( currentUser.isCertified ) { %> <img src="<%= assetPath('verified.png') %>" class="verified-icon"> </a><% } %>
+        <% } %>
+        <% if (locals.currentUser) { %>
+        <a class="btn-nav" href=<%= paths.userPath(currentUser.id) %>>My workplace</a>
+        <form action='<%=paths.destroySession %>' method="POST">
+          <input type="hidden" name='_method' value="delete">
+          <input type="submit" value="Log out" class='btn-nav'>
+        </form>
+
+        <% } else { %>
+        
+        <a class="btn-nav-2" href="<%= paths.newSession %> ">Sign In</a>
+        <a class="btn-nav-2" href="<%= paths.register %> ">Register</a>  
+        <%  } %> 
+      </div>
+      
+    </header>
+
+    <div class="main-front">
+      <%- body %>
+    </div>
+    
+    <script src="<%= assetPath('app.js') %>"></script>
+
+    <footer class="footer">
+
+      <div class="footer-grid">
+
+        <div class="general-v-flex">
+          <div class="grid-child-1">
+            <p class="motivational-font">
+              OUR TEAM: <br>
+              José Carrasco <br>
+              Nicolás Fraga <br>
+              Ziqi Yan
+            </p>
+          </div>
+        </div>
+
+          <div class="general-v-flex">
+            <div class="buttons-h-flex">
+              <a href="/" class="footer-logo"><img class="footer-logo-image" src="<%= assetPath('logo.png') %>" alt="logo"></a>
+            </div>
+            <div class="buttons-h-flex">
+              <p class="motivational-font">"THE ONLY BAD WORKOUT IS THE ONE YOU DIDN'T DO"</p>
+            </div>
+          </div>
+    </footer>
+  </body>
+</html>

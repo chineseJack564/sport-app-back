@@ -1,0 +1,76 @@
+<body>
+    <% if (locals.errors) { %>
+        <div class="errors">
+            You need to fix the following errors:
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.message %></li>
+                <% });%>
+            </ul>
+        </div>
+    <% } %>
+
+
+    <div class="left-h-flex">
+        <br>
+        </br>
+        <h1>User Manegement</h1>
+    </div>
+
+    <div class="general-v-flex">
+    <% users.forEach( user => { %>
+            <% if ( user.isAdmin ) { %>
+                <div class="admin-user-index-card">
+            <% } else { %>
+                <div class="user-index-card">
+            <% } %>
+                    <div class="left-h-flex">
+                        <img src="<%= assetPath('profile.png') %>" alt="profile picture" class="foto">
+                        <div class="general-v-flex">
+                            <div class="left-h-flex">
+                                <p class="routine-font-title red-link"><%= user.username %></p>
+                                <% if ( user.isCertified ) { %> 
+                                    <img src="<%= assetPath('verified.png') %>" class="verified-icon">
+                                <% } %>
+                            </div>
+                            <div class="left-h-flex">
+                                <p class="routine-font black-font"> <%= user.mail %></p>
+                            </div>
+                            <% if ( user.objective ) { %>
+                                <div class="left-h-flex">
+                                    <p class="routine-keywords">Objetive: <%= user.objective %></p>
+                                </div>
+                            <% } %> 
+                            <% if ( user.profession ) { %>
+                                <div class="left-h-flex">
+                                    <p class="routine-keywords">Profession: <%= user.profession %></p>
+                                </div>
+                            <% } %>  
+                        </div>
+                        <div class="user-action-admin">
+                            <% if ( !user.isAdmin ) { %> 
+                                <% if ( user.isCertified ) { %>
+                                    <form action="<%= userCertifyPath(user) %>" method="post">
+                                        <input type="hidden" name='_method' value="patch">
+                                        <input type="hidden" name='isCertified' value="0">
+                                        <input type="submit" class="uncertify-user-button" value="Cancel Certification">
+                                    </form>
+                                <% } else { %>
+                                    <form action="<%= userCertifyPath(user) %>" method="post">
+                                        <input type="hidden" name='_method' value="patch">
+                                        <input type="hidden" name='isCertified' value="1">
+                                        <input type="submit" class="certify-user-button" value="Certify">
+                                    </form>
+                                <% } %>
+                                    <form action="<%= userDeletePath(user) %>" method="post">
+                                        <input type="hidden" name='_method' value="delete">
+                                        <input type="submit" class="delete-account-button" value="Delete Account">
+                                    </form>
+                            <% } %> 
+                        </div>
+                    </div>
+                </div>
+     <% }) %>
+    </div>
+
+</body>

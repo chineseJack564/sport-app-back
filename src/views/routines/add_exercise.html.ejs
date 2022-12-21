@@ -1,0 +1,44 @@
+<div class="sec-header">
+    <h2 class='sec-title'>Add Exercise to <%= routine.title %> </h2>
+    <a href=<%=routine_show_path %> >Back to routine </a>
+    <p class='sec-title'><i class="fas fa-sort-down"></i></p>
+</div>
+
+<div class="routine-exercise">
+    <h2>Included Exercises</h2>
+    <% exerciseAppended.forEach( ex => { %>
+        <div class="rutine-row">
+            <div class="ex-img">
+                <img src="<%= assetPath('gallery-1.jpg') %>" alt="">
+            </div>
+            <div class="ex-info">
+                <h3><%= ex.name %></h3>
+                <p> Primary WorkZone: <%= ex.workZone_p %> </p>
+                <p> Secondary WorkZone:<%= ex.workZone_s %> </p>
+            </div>
+            <form action=<%= del_exer_path(ex) %>  method='post'>
+                <input type="hidden" name='_method' value="delete">
+                <button type="submit" class="btn-delete"> <i class="far fa-trash-alt"></i> Remove Exercise</button>
+            </form>
+        </div>
+    <% } ) %>
+</div>
+<div class="free-exercise">
+<h2>More exercise</h2>
+  <% exerciseFree.forEach( ex => { %>
+    <div class="rutine-row">
+        <div class="ex-img">
+            <img src="<%= assetPath('gallery-1.jpg') %>" alt="">
+        </div>
+        <div class="ex-info">
+            <h3><%= ex.name %></h3>
+            <p> Primary WorkZone: <%= ex.workZone_p %> </p>
+            <p> Secondary WorkZone:<%= ex.workZone_s %> </p>
+        </div>
+        <form action=<%= add_exer_path(ex) %>  method='post'>
+            <input type="hidden" name='_method' value="put">
+            <button type="submit" class="btn-planner2"> <i class="fas fa-plus"></i> Add Exercise</button>
+        </form>
+    </div>
+  <% } ) %>
+</div>

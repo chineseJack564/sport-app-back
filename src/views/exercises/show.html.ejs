@@ -1,0 +1,44 @@
+
+<div class="sec-header">
+    <h2 class='sec-title'>Exercise Detail</h2>
+    <p class='sec-title'><i class="fas fa-sort-down"></i></p>
+</div>
+
+    <div class="div-exercise">
+        <div class="error-m"> 
+            <% if (locals.error) { %>
+                <p><%= error %> </p>
+            <% } %>
+        </div>
+        <div class="planner-title">
+            <img id="routine-show-img" src="<%= assetPath('gallery-1.jpg') %>" alt="exercise image">
+            <div class="rutine-info">
+                <h3 class="routine-font"><%= exercise.name %> </h3>
+                <br>
+                <h1 class="routine-font">About this Exercise: </h1>
+                <h2 class="routine-font-bigger"><%= exercise.description %></h2>
+                <br>
+                <h2 class="routine-font-bigger"> Primary Workzone: <%= exercise.workZoneP %> </h2>
+                <h2 class="routine-font-bigger"> Secondary Workzone: <%= exercise.workZoneS %> </h2>
+                <br>
+                <h2 class="routine-font-bigger">Trainer: <%= owner.username %></h2>
+            </div>
+        </div>
+
+        <% if (locals.user_action) { %>
+            <div class="buttons-h-flex">
+                <form action="<%= deletePath %>" method="post">
+                    <input type="hidden" name='_method' value="delete">
+                    <button type="submit" class="btn-delete"> <i class="far fa-trash-alt"></i> Delete</button>
+                </form>
+                <a href=<%= editPath %>><button class="btn-planner1"><i class="fas fa-edit"></i> Edit</button></a>
+            </div>
+        <% } %> 
+    </div>
+
+
+
+
+
+
+

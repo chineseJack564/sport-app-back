@@ -1,0 +1,116 @@
+<div class="sec-header">
+    <h2 class='sec-title'>Routine Detail</h2>
+    <p class='sec-title'><i class="fas fa-sort-down"></i></p>
+</div>
+
+    <div class="div-routine">
+        <div class="error-m"> 
+            <% if (locals.error) { %>
+                <p><%= error %> </p>
+            <% } %>
+        </div>
+        <div class="planner-title">
+            <img id="routine-show-img" src="<%= assetPath('image_2.jpg') %>" alt="routine image">
+            <div class="rutine-info">
+                <h3 class="routine-font"><%= routine.title %> </h3>
+                <br>
+                <h1 class="routine-font">About this routine: </h1>
+                <h2 class="routine-font-bigger"><%= routine.description %> </h2>
+                <br>
+                <h2 class="routine-font-bigger"> Routine type: <%= routine.cathegory %></p>
+                <h2 class="routine-font-bigger">Trainer: <%= owner.username %></p>
+            </div>
+        </div>
+        <% if (locals.user_action) { %>
+            <div class="buttons-h-flex">
+                <form action="<%= deletePath %>" method="post">
+                    <input type="hidden" name='_method' value="delete">
+                    <button type="submit" class="btn-delete"> <i class="far fa-trash-alt"></i> Delete</button>
+                </form>
+                <a href=<%= editPath %>><button class="btn-planner1"><i class="fas fa-edit"></i> Edit</button></a>
+                <a href=<%= add_exercise_path %>><button class="btn-planner2"><i class="far fa-plus-square"></i> Add exercise</button></a>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="routine-exercise">
+        <h2>Included Exercises</h2>
+        <% exerciseAppended.forEach( ex => { %>
+            <div class="rutine-row">
+                <div class="ex-img">
+                    <img src="<%= assetPath('gallery-1.jpg') %>" alt="">
+                </div>
+                <div class="ex-info">
+                    <h3><%= ex.name %></h3>
+                    <p> Primary WorkZone: <%= ex.workZone_p %> </p>
+                    <p> Secondary WorkZone:<%= ex.workZone_s %> </p>
+                </div>
+                <div class="btn-details">
+                    <a href=<%=paths.exercise_show_path(ex.id) %> ><i class="fas fa-play"></i> Check details</a>
+                </div>
+            </div>
+        <% } ) %>
+    </div>
+
+<div class="review-section-title">
+    <p class="review-section-title-font">Routine reviews</p>
+</div>
+
+<div>
+    <% reviews.forEach(review => { %>
+        <% if (review.routineId === routine.id) { %>
+            <div class="review-card">
+                <div class="grid-container" id="review-grid">
+
+                    <div class="grid-child">
+                        <img class="review-img" src="<%= assetPath('person_2.jpg') %>">
+                    </div>
+
+                    <div class="grid-child">
+
+                        <div class="review-title">
+                            <p class="review-title-font"><%= review.title %></p>
+                        </div>
+
+                        <div class="review-author">
+                            <p class="routine-font black-font"> By: <%= review.user.username %></p>
+                        </div>
+
+                        <div class="review-score">
+                            <% for (let i = 0; i < review.score; i++) { %>
+                            <span class="star">&starf;</span>
+                            <% } %>
+                        </div>
+
+                        <div class="review-content">
+                            <p class="routine-font black-font"> <%= review.content %></p>
+                        </div>
+
+                        <div class="review-buttons">
+
+                        </div>
+                    </div>
+                    <% if (currentUser) { %>
+                        <% if (currentUser.id === review.userId || currentUser.isAdmin) { %>
+                            <div class="grid-child" id="center-review-buttons">
+                                <a href=<%= editReviewPath(review) %>><button class="btn-planner1" id="review-edit-btn"> Edit</button></a>
+                                <form action="<%= deleteReviewPath(review) %>" method="post">
+                                    <input type="hidden" name='_method' value="delete">
+                                    <button type="submit" class="btn-delete" id="review-edit-btn"> Delete</button>
+                                </form>
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        <% }; %>
+    <% }); %>
+</div>
+    <% if (currentUser && currentUser.id !== owner.id ) { %>
+        <div class="center-container">
+            <button class="action-bar-button2"><a href=<%= newReviewPath %> >+ New Review</a></button>
+        </div>
+    <% } %>
+
+
+

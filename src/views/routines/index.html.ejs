@@ -1,0 +1,37 @@
+<div class="sec-header">
+    <h2 class='sec-title'>Our Routines</h2>
+    <p class='sec-title'><i class="fas fa-sort-down"></i></p>
+</div>
+
+<div class="main-flex">
+    <div class="noti">
+            <% if (locals.errors) { %>
+        Something is wrong with the creation:
+            <h3><%= errors %></h3>
+      <% } %>
+    </div>
+
+    <div class="action-bar">
+        <input type="text" class="search-input" placeholder="Search here">
+        <button class="action-bar-button1">Search</button>
+        <button class="action-bar-button2"><a href=<%= paths.routine_new_path %> >+ New Rutine</a></button>
+    </div>
+
+    <div class="routines-flex">
+            <% routines.forEach( routine => { %>
+                <a class="routine-card" href="<%= routinePath(routine) %>">
+                  <img class="routine-img" src="<%= assetPath('image_7.jpg') %>">
+                  <div class="wod-info-flex">
+                    <p class="routine-font-title red-link"><%= routine.title %></p>
+                    <p class="routine-font black-font"> <%= routine.description %></p>
+                    <p class="routine-keywords">Cathegory: <%= routine.cathegory %></p>
+                    <p class="routine-font black-font"> Made by: <%= routine.user.username %> </p>
+                  </div>
+                </a>
+             <% }) %>
+
+    </div>
+</div>
+
+
+<a href="<%= newRoutinePath %>" ></a>

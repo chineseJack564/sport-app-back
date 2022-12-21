@@ -1,0 +1,90 @@
+<body>
+  <!-- side bar start -->
+  <nav class="sidebar">
+    <ul class="sidebar-nav">
+      <li class="logo">
+        <a href="<%= paths.front_page %>" class="side-link1">
+          <img src="<%= assetPath('logo.png') %>" alt="" />
+          <div class="logo-text">WEWOD</div>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="<%= paths.userPath(currentUser.id) %>" class="side-link"
+          ><i class="fas fa-tachometer-alt icon-buffer"></i>
+          <div class="link-text">Dashboard</div>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href="<%= paths.userProfilePath(currentUser.id) %>" class="side-link"
+          ><i class="fas fa-address-card icon-buffer"></i>
+          <div class="link-text">My profile</div>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a href=<%=paths.edit_user_path(currentUser.id) %> class="side-link"
+          ><i class="far fa-edit icon-buffer"></i>
+          <div class="link-text">Edit Profile</div>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <form action="<%=paths.destroySession %>" method="POST">
+          <input type="hidden" name="_method" value="delete" />
+
+          <button type="submit" class="btn-side-logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <div>Log Out</div>
+          </button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+  <!-- side bar end -->
+  <!-- header sec start -->
+  <div class="header1">
+    <div class="panel-name"><i class="fas fa-bars"></i> Dashboard</div>
+
+    <div class="user-foto">
+      <img src="<%= assetPath('profile.png') %>" alt="" class="foto" />
+      <%= currentUser.username %>
+      <% if ( currentUser.isCertified ) { %> 
+        <img src="<%= assetPath('verified.png') %>" class="verified-icon">
+    <% } %> 
+    </div>
+  </div>
+  <!-- header sec end -->
+  <main>
+    <div class="container">
+      <div class="user-card">
+        <div class="back-img">
+          <img src=<%= assetPath('cover.jpg') %> alt="" />
+        </div>
+
+        <div class="user-header">
+          <div class="user-1">
+            <img src="<%= assetPath('profile.png') %>" alt="" class="foto" />
+            <div class="user-intro">
+              <% if (currentUser.isCertified) { %>
+                  <h4><%= currentUser.username %><img src="<%= assetPath('verified.png') %>" class="verified-icon"></h4>
+              <% } else { %>
+                  <h4><%= currentUser.username %></h4>
+              <% } %>
+              <p>New to body builing</p>
+            </div>
+          </div>
+
+          <div class="user-interests">
+            Interested In:
+            <ul>
+              <li><%= currentUser.objective %></li>
+            </ul>
+          </div>
+
+          <div class="btn-more">
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>

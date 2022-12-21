@@ -1,0 +1,45 @@
+<div class="main-flex">
+    <div class="noti">
+            <% if (locals.errors) { %>
+        Something is wrong with the creation:
+            <h3><%= errors %></h3>
+      <% } %>
+    </div>
+
+    <div>
+        <% reviews.forEach(review => { %>
+            <a class='review-card' href=<%= reviewPath(review) %>
+                <div class="grid-container" id="review-grid">
+                    <div class="grid-child">
+                        <img class="review-img" src="<%= assetPath('image_7.jpg') %>">
+                    </div>
+                    <div class="grid-child">
+
+                        <div class="review-title">
+                            <p class="review-title-font"><%= review.title %></p>
+                        </div>
+
+                        <div class="review-author">
+                            <p class="routine-font black-font"> By <%= review.userId %></p>
+                        </div>
+
+                        <div class="review-score">
+                            <% for (let i = 0; i < review.score; i++) { %>
+                            <span class="star">&starf;</span>
+                            <% } %>
+                        </div>
+
+                        <div class="review-content">
+                            <p class="routine-font black-font"> <%= review.content %></p>
+                        </div>
+
+                        <div class="review-buttons">
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+        <% }); %>
+    </div>
+</div>

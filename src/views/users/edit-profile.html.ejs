@@ -1,0 +1,70 @@
+<body>
+    <% if (notice) { %>
+        <p><%= notice %></p>
+    <% } %>
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } %>
+    <div class="form-box">
+        <form action="<%= updatePath %>" method="post">
+            <input type="hidden" name='_method' value="patch">
+            <a href="home.html"><img src="<%= assetPath('logo-full.png') %>" alt="Company logo"></a>
+            <h4>Submit changes to your profile</h4>
+            
+            <!-- Input Box (Contiene todos los label-input boxes) -->
+            <div class="input-box">
+                <div class="label-input-box">
+                    <label for="username">Username</label><br>
+                    <input type="text" class="register-form-input" name="username" placeholder="<%= user.username %>" value="<%= user.username %>"><br>
+                </div>
+    
+                <div class="label-input-box">
+                    <label for="email">Email</label><br>
+                    <input type="text" class="register-form-input" name="mail" placeholder="<%= user.mail %>" value="<%= user.mail %>"><br>
+                </div>
+
+                <% if (user.iscertified) { %>
+                <div class="label-input-box">
+                    <label for="Profession">Profession</label><br>
+                    <input type="profession" class="register-form-input" name="profession" value="<%= user.profession %>" placeholder="You have no registered profession"><br>
+                </div>
+                <% } %>
+
+                <div class="label-input-box">
+                    <label for="Objective">Objective</label><br>
+                    <input type="objective" class="register-form-input" name="objective" value="<%= user.objective %>" placeholder="You have no registered objective"><br>
+                </div>
+    
+                <div class="label-input-box">
+                    <label for="password">Current password</label><br>
+                    <input type="password" class="register-form-input" name="formerPassword" placeholder="**********"><br>
+                </div>
+    
+                <div class="label-input-box">
+                    <label for="confirm-password">Confirm new password</label><br>
+                    <input type="password" class="register-form-input" name="password" placeholder="**********"><br>
+                </div>
+
+                <div class="label-input-box">
+                    <label for="confirm-password">Confirm new password</label><br>
+                    <input type="password" class="register-form-input" name="confirmNewPass" placeholder="**********"><br>
+                </div>
+
+            </div>
+
+                <input type="submit" class="form-submit-button" value="Submit my changes">
+
+            <!-- Submit Button -->
+        </form>
+
+        <form action="<%= deletePath %>" method="post">
+
+            <input type="hidden" name='_method' value="delete">
+
+            <input type="submit" class="form-submit-button-delete" value="Delete my Account">
+
+        </form>
+
+    </div>
+    
+</body>

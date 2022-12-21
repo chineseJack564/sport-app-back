@@ -1,0 +1,62 @@
+
+
+<div class="form-box" id='new_exercise'>
+<form action="<%=submitPath%>" method="POST">
+  <div class="form-title">
+    <h2 class="new-form-title">New Routine</h2>
+  </div>
+  <% if (locals.errors) { %>
+    Something is wrong with the creation:
+    <ul>
+      <% errors.forEach(error => { %>
+        <li><%= error.message %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  <div class="input-box" id="new-form-input-box">
+    <div class="label-input-box">
+      <label for="title">Routine Title</label>
+      <input type="text" class="register-form-input" name="title" id="title" />
+      <label for="title">Minimum 5 characters</label>
+    </div>
+
+    <div class="label-input-box">
+      <label for="description">Routine Description</label>
+      <textarea
+        name="description"
+        id="description"
+        rows="4"
+        cols="50"
+        class="register-form-input-area"
+      >
+      </textarea>
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-child">
+      <div class="grid-container">
+        <div class="grid-child">
+          <label for="cathegory" id="exercise-form-text"
+            >Choose a cathegory:</label
+          >
+        </div>
+
+        <div class="grid-child">
+          <select class="select-box" name="cathegory" id="cathegory">
+            <option selected disabled>Pick a cathegory</option>
+            <option value="Build muscle">Build Muscle</option>
+            <option value="Lose Weight">Lose Weight</option>
+            <option value="Shape Define">Shape Define</option>
+            <option value="Yoga">Yoga</option>
+            <option value="Meditation">Meditation</option>
+            <option value="Cardio">Cardio</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="submit" class="form-submit-button" id="new-form-button" value="Create Routine">
+</form>
+</div>

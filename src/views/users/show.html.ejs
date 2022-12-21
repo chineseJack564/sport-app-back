@@ -1,0 +1,178 @@
+<body>
+    <!-- side bar start -->
+    <nav class="sidebar">
+        <ul class="sidebar-nav">
+            <li class="logo">
+                <a href="<%= paths.front_page %>" class="side-link1">
+                    <img src="<%= assetPath('logo.png') %>" alt=""> <div class="logo-text">WEWOD</div>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="<%= paths.userPath(currentUser.id) %>" class="side-link"><i class="fas fa-tachometer-alt icon-buffer"></i>
+                    <div class="link-text">Dashboard</div>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="<%= paths.userProfilePath(currentUser.id) %>" class="side-link"><i class="fas fa-address-card icon-buffer"></i>
+                    <div class="link-text">My profile</div>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href=<%=paths.edit_user_path(currentUser.id) %> class="side-link"
+                  ><i class="far fa-edit icon-buffer"></i>
+                  <div class="link-text">Edit Profile</div>
+                </a>
+              </li>
+            <li class="sidebar-item">
+                <form action='<%=paths.destroySession %>' method="POST">
+                    <input type="hidden" name='_method' value="delete">
+                    
+                <button type="submit" class="btn-side-logout"> <i class="fas fa-sign-out-alt"></i> <div>Log Out </div></button>
+                </form>
+
+            </li>
+        </ul>
+    </nav>
+    <!-- side bar end -->
+    <!-- header sec start -->
+    <div class="header1">
+        <div class="panel-name">
+            <i class="fas fa-bars"></i> Dashboard
+        </div>
+
+        <div class="user-foto">
+            <img src="<%= assetPath('profile.png') %>" alt="" class="foto">
+            <%= currentUser.username  %>
+            <% if ( currentUser.isCertified ) { %> 
+                <img src="<%= assetPath('verified.png') %>" class="verified-icon">
+            <% } %> 
+        </div>
+    </div>
+    <!-- header sec end -->
+    <main>
+        <div class="container">
+            <!-- first row start -->
+            <div class="row">
+                <!-- resume sec start -->
+                <div class="col-xl-12 col-xxl-6">
+                    <div class="row">
+                        <div class="col-6 card-box">
+                            <div class="card card-buffer1">
+                                <i class="fas fa-clock"></i>
+                                <div class="card-text">
+                                    <p class="des">Total training time</p>
+                                    <p class="info">43h</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 card-box">
+                            <div class="card card-buffer2">
+                                <i class="fas fa-running"></i>
+                                <div class="card-text">
+                                    <p class="des">Total running distance</p>
+                                    <p class="info">5km</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 card-box">
+                            <div class="card card-buffer3">
+                                <i class="fas fa-calendar-day"></i>
+                                <div class="card-text">
+                                    <p class="des">Total training days</p>
+                                    <p class="info">10 days</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 card-box">
+                            <div class="card card-buffer4">
+                                <i class="fas fa-spa"></i>
+                                <div class="card-text">
+                                    <p class="des">Total meditation/yoga time</p>
+                                    <p class="info">5h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- resume sec end -->
+                <!-- daily rutine strat -->
+                <div class="col-xl-12 col-xxl-6">
+                    <div class="d-rutine">
+                          <div class="rutine-text">
+                                <h2>Today's rutine</h2>
+                                <p class="r-content">Upper body training</p>
+                                <a href=""><button class="btn-1"> <i class="fas fa-dumbbell"></i> View details</button></a>
+                          </div>
+                          <div class="rutine-img">
+                              <img src=<%= assetPath('bg_2.jpg') %> alt="" class="img">
+                          </div>
+                    </div>
+                </div>
+                <!-- daily rutine end -->
+            </div>
+            <!-- first row end -->
+            <!-- second row start -->
+            <div class="row">
+                <!-- excersice recomendation start -->
+                <div class="col-xl-12 col-xxl-6">
+                   <div class="d-card">
+                       <div class="card-title">
+                           <p>Certificated User recomendation</p> 
+                            <button class="btn-card">View more</button>
+                       </div>
+                    <div class="col-4 small-card">
+                        <img src=<%= assetPath('1.jpg')%> alt="">
+                        <h4>John</h4>
+                        <p>Body builder at N1 Gym</p>
+                    </div>
+
+                    <div class="col-4 small-card">
+                        <img src= <%= assetPath('1.jpg')%> alt="">
+                        <h4>Emma</h4>
+                        <p>Profesional Yoga teacher</p>
+                    </div>
+
+                    <div class="col-4 small-card">
+                        <img src=<%= assetPath('1.jpg')%> alt="">
+                        <h4>Max</h4>
+                        <p>Profesional Athelet</p>
+                    </div>
+
+                   </div> 
+                </div>
+                <!-- excersice recomendation end -->
+
+                <!-- rutine recomendation start -->
+                <div class="col-xl-12 col-xxl-6">
+                    <div class="d-card">
+                        <div class="card-title">
+                            <p>Recomended rutines for you</p> 
+                             <button class="btn-card">View more</button>
+                        </div>
+                     <div class="col-4 small-card">
+                         <img src=<%= assetPath('img5.jpg')%> alt="" class="img-small">
+                         <h4>Iron arms</h4>
+                         <a href="#" class="btn-2">View details</a>
+                     </div>
+ 
+                     <div class="col-4 small-card">
+                         <img src=<%= assetPath('img5.jpg')%> alt="" class="img-small">
+                         <h4>Core training</h4>
+                         <a href="#" class="btn-2">View details</a>
+                     </div>
+ 
+                     <div class="col-4 small-card">
+                         <img src=<%= assetPath('img5.jpg')%> alt="" class="img-small">
+                         <h4>Dead Lift Focus</h4>
+                         <a href="#" class="btn-2">View details</a>
+                     </div>
+                </div>
+                <!-- rutine recomendation end -->
+            </div>
+            <!-- second row end -->
+        </div>
+    </main>
+</body>
